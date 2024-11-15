@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        body {
+            margin: 0;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
+            font-family: 'Poppins', sans-serif;
+            color: #fff;
+            background-size: 400% 400%;
+            animation: gradientBG 8s ease infinite;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .container h1 {
+            font-size: 3em;
+            color: #ff6f61;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 10px;
+        }
+
+        .container img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
+            margin-top: 20px;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .container img:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 50px rgba(255, 255, 255, 1);
+        }
+
+        .container p {
+            font-size: 1.4em;
+            color: #1a1a1a;
+            margin-top: 20px;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .container p:last-of-type {
+            font-style: italic;
+            font-weight: bold;
+            color: #ff4d6d;
+        }
+
+        video {
+            border: 3px solid #fff;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            margin-top: 20px;
+            max-width: 100%;
+        }
+
+        /* Fireworks animation */
+        .firework {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes firework {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(1); opacity: 0; }
+        }
+
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ff5e78;
+            animation: firework 1s linear infinite;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .container h1 {
+                font-size: 2.5em;
+            }
+
+            .container p {
+                font-size: 1.2em;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .container h1 {
+                font-size: 2em;
+            }
+
+            .container img {
+                width: 120px;
+                height: 120px;
+            }
+
+            .container p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="firework" id="firework-container"></div>
+
+    <div class="container">
+        <h1>Happy Birthday, My Love ♥️!</h1>
+        <img src="Ali.jpeg" alt="Boyfriend's Picture" id="boyfriend-photo">
+        <p>Ali, today is all about celebrating you—the most amazing person who has brought so much happiness and love into my life.</p>
+        <p>I’m so lucky to have you by my side, and I hope this year brings you as much joy and love as you bring me every single day. I love you to the moon and back! 🌙❤️🎂</p>
+        <p><i><strong>Forever yours, <br> Fatima Ali Arshad 💕</strong></i></p>
+        <video controls>
+            <source src="ali.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <script>
+        function createFirework() {
+            const fireworkContainer = document.getElementById('firework-container');
+            for (let i = 0; i < 25; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.top = Math.random() * 100 + 'vh';
+                particle.style.backgroundColor = getRandomColor();
+                fireworkContainer.appendChild(particle);
+
+                setTimeout(() => {
+                    particle.remove();
+                }, 1000);
+            }
+        }
+
+        function getRandomColor() {
+            const colors = ['#ff5e78', '#ffcc00', '#ff5733', '#ff33d6', '#6be585'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        setInterval(createFirework, 800);
+    </script>
+
+</body>
+</html>
