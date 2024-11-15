@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #a6f1f1;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            color: #fff;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .container h1 {
+            font-size: 3em;
+            color: #9c0f0f;
+        }
+
+        .container img {
+            width: 150px;
+            height: 200px;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+            margin-top: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .container img:hover {
+            transform: scale(1.1);
+        }
+
+        .container p {
+            font-size: 1.2em;
+            color: #0c0c0c;
+            margin-top: 20px;
+        }
+
+        /* Fireworks animation */
+        .firework {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes firework {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(1); opacity: 0; }
+        }
+
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #ff5e78;
+            animation: firework 0.6s linear infinite;
+        }
+
+    </style>
+</head>
+<body>
+
+    
+    <div class="firework" id="firework-container"></div>
+
+    <div class="container">
+        <h1>Happy Birthday, My Love♥️!</h1>
+        <img src="Ali.jpeg" alt="Boyfriend's Picture" id="boyfriend-photo">
+        <p>Ali, today is all about celebrating you—the most amazing person who has brought so much happiness and love into my life.</p>
+
+            <p> I’m so lucky to have you by my side, and I hope this year brings you as much joy and love as you bring me every single day. I love you to the moon and back! 🌙❤️🎂</p>
+            
+          
+            <p><I><BOLD>Forever yours,
+                Fatima Ali Arshad 💕</BOLD></I></p>
+        
+        
+        <video controls width="300" style="margin-top: 20px;">
+            <source src="ali.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <script>
+       
+        function createFirework() {
+            const fireworkContainer = document.getElementById('firework-container');
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.top = Math.random() * 100 + 'vh';
+                particle.style.backgroundColor = getRandomColor();
+                fireworkContainer.appendChild(particle);
+
+                setTimeout(() => {
+                    particle.remove();
+                }, 600);
+            }
+        }
+
+        function getRandomColor() {
+            const colors = ['#ff5e78', '#ffcc00', '#ff5733', '#ff33d6'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        setInterval(createFirework, 1000);
+    </script>
+
+</body>
+</html>
